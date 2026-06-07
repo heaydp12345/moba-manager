@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "match.schema.json",
+  "title": "Match Settings Data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "matches"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "matches": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/matchSettings"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zhTw"
+      ],
+      "properties": {
+        "zhTw": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "matchSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "teamSize",
+        "maxLevel",
+        "maxItems",
+        "banCount",
+        "pickCount",
+        "matchTimeLimit"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "teamSize": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 5
+        },
+        "maxLevel": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 15
+        },
+        "maxItems": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 3
+        },
+        "banCount": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 2
+        },
+        "pickCount": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 5
+        },
+        "matchTimeLimit": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Match time limit in seconds."
+        },
+        "gameMode": {
+          "type": "string",
+          "enum": [
+            "moba"
+          ],
+          "default": "moba"
+        },
+        "winCondition": {
+          "type": "string",
+          "enum": [
+            "destroyEnemyNexus"
+          ],
+          "default": "destroyEnemyNexus"
+        },
+        "seedPolicy": {
+          "type": "string",
+          "enum": [
+            "optional",
+            "required"
+          ],
+          "default": "optional"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

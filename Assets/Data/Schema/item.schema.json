@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "item.schema.json",
+  "title": "Item Data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "maxItemsPerHero",
+    "componentTypes",
+    "items"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "maxItemsPerHero": {
+      "type": "integer",
+      "const": 3
+    },
+    "componentTypes": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "attackDamage",
+          "abilityPower",
+          "armor",
+          "magicResist",
+          "maxHealth",
+          "manaRegen",
+          "critChance",
+          "lifeSteal",
+          "attackSpeed"
+        ]
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zhTw"
+      ],
+      "properties": {
+        "zhTw": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "statModifiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attackDamage": {
+          "type": "number"
+        },
+        "abilityPower": {
+          "type": "number"
+        },
+        "armor": {
+          "type": "number"
+        },
+        "magicResist": {
+          "type": "number"
+        },
+        "maxHealth": {
+          "type": "number"
+        },
+        "manaRegen": {
+          "type": "number"
+        },
+        "critChance": {
+          "type": "number"
+        },
+        "lifeSteal": {
+          "type": "number"
+        },
+        "attackSpeed": {
+          "type": "number"
+        },
+        "moveSpeed": {
+          "type": "number"
+        },
+        "attackRange": {
+          "type": "number"
+        }
+      }
+    },
+    "itemEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effectType",
+        "description"
+      ],
+      "properties": {
+        "effectType": {
+          "type": "string",
+          "enum": [
+            "statConversion",
+            "bonusStat",
+            "shield",
+            "heal",
+            "damage",
+            "trueDamage",
+            "damageReduction",
+            "cooldownReduction",
+            "controlImmunity",
+            "burn",
+            "poison",
+            "reviveGuard",
+            "reflectDamage",
+            "custom"
+          ]
+        },
+        "description": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "trigger": {
+          "type": "string",
+          "enum": [
+            "always",
+            "onAttack",
+            "onSkillHit",
+            "onCrit",
+            "onTakeDamage",
+            "onHeal",
+            "onLifeSteal",
+            "onManaRegen",
+            "onKillNearbyEnemy",
+            "onLowHealth",
+            "outOfCombat",
+            "nearEnemy",
+            "onFatalDamage"
+          ]
+        },
+        "value": {
+          "type": "number"
+        },
+        "sourceStat": {
+          "type": "string",
+          "enum": [
+            "attackDamage",
+            "abilityPower",
+            "armor",
+            "magicResist",
+            "maxHealth",
+            "missingHealth",
+            "manaRegen",
+            "critChance",
+            "lifeSteal",
+            "attackSpeed",
+            "moveSpeed",
+            "attackRange"
+          ]
+        },
+        "targetStat": {
+          "type": "string",
+          "enum": [
+            "attackDamage",
+            "abilityPower",
+            "armor",
+            "magicResist",
+            "maxHealth",
+            "manaRegen",
+            "critChance",
+            "lifeSteal",
+            "attackSpeed",
+            "moveSpeed",
+            "attackRange"
+          ]
+        },
+        "damageType": {
+          "type": "string",
+          "enum": [
+            "physical",
+            "magic",
+            "true"
+          ]
+        },
+        "buffId": {
+          "$ref": "#/$defs/id"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true,
+          "default": []
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "tier",
+        "stats"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "tier": {
+          "type": "string",
+          "enum": [
+            "component",
+            "completed"
+          ]
+        },
+        "componentType": {
+          "type": "string",
+          "enum": [
+            "attackDamage",
+            "abilityPower",
+            "armor",
+            "magicResist",
+            "maxHealth",
+            "manaRegen",
+            "critChance",
+            "lifeSteal",
+            "attackSpeed"
+          ]
+        },
+        "recipe": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "componentItemIds"
+          ],
+          "properties": {
+            "componentItemIds": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          }
+        },
+        "stats": {
+          "$ref": "#/$defs/statModifiers"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/itemEffect"
+          },
+          "default": []
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tier": {
+                "const": "component"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "componentType"
+            ],
+            "not": {
+              "required": [
+                "recipe"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tier": {
+                "const": "completed"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "recipe",
+              "effects"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

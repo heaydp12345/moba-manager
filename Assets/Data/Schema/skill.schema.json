@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "skill.schema.json",
+  "title": "Skill Data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "skills"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "skills": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/skill"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zhTw"
+      ],
+      "properties": {
+        "zhTw": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "levelValues": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 15,
+      "items": {
+        "type": "number"
+      }
+    },
+    "scaling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stat",
+        "ratio"
+      ],
+      "properties": {
+        "stat": {
+          "type": "string",
+          "enum": [
+            "attackDamage",
+            "abilityPower",
+            "armor",
+            "magicResist",
+            "maxHealth",
+            "missingHealth",
+            "manaRegen",
+            "critChance",
+            "lifeSteal",
+            "attackSpeed",
+            "moveSpeed",
+            "attackRange"
+          ]
+        },
+        "ratio": {
+          "$ref": "#/$defs/levelValues"
+        }
+      }
+    },
+    "targeting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targetType"
+      ],
+      "properties": {
+        "targetType": {
+          "type": "string",
+          "enum": [
+            "self",
+            "ally",
+            "enemy",
+            "area",
+            "direction",
+            "passive"
+          ]
+        },
+        "range": {
+          "$ref": "#/$defs/levelValues"
+        },
+        "radius": {
+          "$ref": "#/$defs/levelValues"
+        },
+        "maxTargets": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effectType"
+      ],
+      "properties": {
+        "effectType": {
+          "type": "string",
+          "enum": [
+            "damage",
+            "heal",
+            "buff",
+            "debuff",
+            "control",
+            "projectile",
+            "area"
+          ]
+        },
+        "damageType": {
+          "type": "string",
+          "enum": [
+            "physical",
+            "magic",
+            "true"
+          ]
+        },
+        "controlType": {
+          "type": "string",
+          "enum": [
+            "stun",
+            "slow",
+            "root",
+            "silence",
+            "knockup",
+            "knockback",
+            "taunt"
+          ]
+        },
+        "baseValue": {
+          "$ref": "#/$defs/levelValues"
+        },
+        "duration": {
+          "$ref": "#/$defs/levelValues"
+        },
+        "scaling": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scaling"
+          },
+          "default": []
+        },
+        "buffId": {
+          "$ref": "#/$defs/id"
+        },
+        "projectileSpeed": {
+          "$ref": "#/$defs/levelValues"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true,
+          "default": []
+        }
+      }
+    },
+    "skill": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "slot",
+        "maxLevel",
+        "targeting",
+        "effects"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "description": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "slot": {
+          "type": "string",
+          "enum": [
+            "passive",
+            "q",
+            "w",
+            "e",
+            "r"
+          ]
+        },
+        "maxLevel": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 15
+        },
+        "cooldown": {
+          "$ref": "#/$defs/levelValues"
+        },
+        "resourceCost": {
+          "$ref": "#/$defs/levelValues"
+        },
+        "castTime": {
+          "$ref": "#/$defs/levelValues"
+        },
+        "targeting": {
+          "$ref": "#/$defs/targeting"
+        },
+        "effects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/effect"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "slot": {
+                "const": "passive"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "maxLevel": {
+                "const": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "slot": {
+                "enum": [
+                  "q",
+                  "w",
+                  "e"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "maxLevel": {
+                "const": 4
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "slot": {
+                "const": "r"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "maxLevel": {
+                "const": 3
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

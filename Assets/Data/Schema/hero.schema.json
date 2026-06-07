@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hero.schema.json",
+  "title": "Hero Data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "heroes"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "heroes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/hero"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zhTw"
+      ],
+      "properties": {
+        "zhTw": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "statBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attackDamage",
+        "abilityPower",
+        "armor",
+        "magicResist",
+        "maxHealth",
+        "manaRegen",
+        "critChance",
+        "lifeSteal",
+        "attackSpeed",
+        "moveSpeed",
+        "attackRange"
+      ],
+      "properties": {
+        "attackDamage": {
+          "type": "number",
+          "minimum": 0
+        },
+        "abilityPower": {
+          "type": "number",
+          "minimum": 0
+        },
+        "armor": {
+          "type": "number",
+          "minimum": 0
+        },
+        "magicResist": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maxHealth": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "manaRegen": {
+          "type": "number",
+          "minimum": 0
+        },
+        "critChance": {
+          "type": "number",
+          "minimum": 0
+        },
+        "lifeSteal": {
+          "type": "number",
+          "minimum": 0
+        },
+        "attackSpeed": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "moveSpeed": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "attackRange": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "skillSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "passive",
+        "q",
+        "w",
+        "e",
+        "r"
+      ],
+      "properties": {
+        "passive": {
+          "$ref": "#/$defs/id"
+        },
+        "q": {
+          "$ref": "#/$defs/id"
+        },
+        "w": {
+          "$ref": "#/$defs/id"
+        },
+        "e": {
+          "$ref": "#/$defs/id"
+        },
+        "r": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "hero": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "role",
+        "attackType",
+        "baseStats",
+        "growthStats",
+        "skills"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "tank",
+            "fighter",
+            "assassin",
+            "mage",
+            "marksman",
+            "support"
+          ]
+        },
+        "attackType": {
+          "type": "string",
+          "enum": [
+            "melee",
+            "ranged"
+          ]
+        },
+        "damageProfile": {
+          "type": "string",
+          "enum": [
+            "physical",
+            "magic"
+          ],
+          "default": "physical"
+        },
+        "resourceType": {
+          "type": "string",
+          "const": "mana"
+        },
+        "baseStats": {
+          "$ref": "#/$defs/statBlock"
+        },
+        "growthStats": {
+          "$ref": "#/$defs/statBlock"
+        },
+        "skills": {
+          "$ref": "#/$defs/skillSet"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

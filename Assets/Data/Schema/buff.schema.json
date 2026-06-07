@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "buff.schema.json",
+  "title": "Buff Data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "buffs"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "buffs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/buff"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zhTw"
+      ],
+      "properties": {
+        "zhTw": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "statModifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stat",
+        "operation",
+        "value"
+      ],
+      "properties": {
+        "stat": {
+          "type": "string",
+          "enum": [
+            "attackDamage",
+            "abilityPower",
+            "armor",
+            "magicResist",
+            "maxHealth",
+            "manaRegen",
+            "critChance",
+            "lifeSteal",
+            "attackSpeed",
+            "moveSpeed",
+            "attackRange",
+            "cooldownReduction"
+          ]
+        },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "add",
+            "multiply",
+            "override"
+          ]
+        },
+        "value": {
+          "type": "number"
+        }
+      }
+    },
+    "periodicEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effectType",
+        "tickInterval",
+        "value"
+      ],
+      "properties": {
+        "effectType": {
+          "type": "string",
+          "enum": [
+            "damage",
+            "heal"
+          ]
+        },
+        "damageType": {
+          "type": "string",
+          "enum": [
+            "physical",
+            "magic",
+            "true"
+          ]
+        },
+        "tickInterval": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "sourceStat": {
+          "type": "string",
+          "enum": [
+            "attackDamage",
+            "abilityPower",
+            "maxHealth",
+            "missingHealth"
+          ]
+        },
+        "scalingRatio": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "buff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "category",
+        "duration"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "description": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "buff",
+            "debuff",
+            "control",
+            "dot",
+            "hot"
+          ]
+        },
+        "duration": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maxStacks": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        },
+        "stackingRule": {
+          "type": "string",
+          "enum": [
+            "refreshDuration",
+            "addStack",
+            "replace",
+            "ignore"
+          ],
+          "default": "refreshDuration"
+        },
+        "controlType": {
+          "type": "string",
+          "enum": [
+            "stun",
+            "slow",
+            "root",
+            "silence",
+            "knockup",
+            "knockback",
+            "taunt"
+          ]
+        },
+        "statModifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/statModifier"
+          },
+          "default": []
+        },
+        "periodicEffect": {
+          "$ref": "#/$defs/periodicEffect"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "category": {
+                "const": "control"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "controlType"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "category": {
+                "enum": [
+                  "dot",
+                  "hot"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "periodicEffect"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
