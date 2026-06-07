@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "0.1.0",
+  "buffs": [
+    {
+      "id": "hemorrhage_stack",
+      "name": {
+        "zhTw": "Hemorrhage Stack",
+        "en": "Hemorrhage Stack"
+      },
+      "description": {
+        "zhTw": "The target takes physical damage over time and the effect can stack.",
+        "en": "The target takes physical damage over time and the effect can stack."
+      },
+      "category": "dot",
+      "duration": 5,
+      "maxStacks": 5,
+      "stackingRule": "addStack",
+      "periodicEffect": {
+        "effectType": "damage",
+        "damageType": "physical",
+        "tickInterval": 1,
+        "value": 12,
+        "sourceStat": "attackDamage",
+        "scalingRatio": 0.3
+      },
+      "tags": [
+        "bleed",
+        "physical",
+        "stacking"
+      ]
+    },
+    {
+      "id": "crippling_slow",
+      "name": {
+        "zhTw": "Crippling Slow",
+        "en": "Crippling Slow"
+      },
+      "description": {
+        "zhTw": "Reduces the target's movement speed.",
+        "en": "Reduces the target's movement speed."
+      },
+      "category": "debuff",
+      "duration": 1,
+      "maxStacks": 1,
+      "stackingRule": "refreshDuration",
+      "statModifiers": [
+        {
+          "stat": "moveSpeed",
+          "operation": "multiply",
+          "value": 0.6
+        }
+      ],
+      "tags": [
+        "slow",
+        "movement"
+      ]
+    }
+  ]
+}

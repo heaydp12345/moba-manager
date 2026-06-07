@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "0.1.0",
+  "maxItemsPerHero": 3,
+  "componentTypes": [
+    "attackDamage",
+    "abilityPower",
+    "armor",
+    "magicResist",
+    "maxHealth",
+    "manaRegen",
+    "critChance",
+    "lifeSteal",
+    "attackSpeed"
+  ],
+  "items": [
+    {
+      "id": "bf_sword",
+      "name": {
+        "zhTw": "B. F. Sword",
+        "en": "B. F. Sword"
+      },
+      "tier": "component",
+      "componentType": "attackDamage",
+      "stats": {
+        "attackDamage": 10
+      },
+      "effects": []
+    },
+    {
+      "id": "recurve_bow",
+      "name": {
+        "zhTw": "Recurve Bow",
+        "en": "Recurve Bow"
+      },
+      "tier": "component",
+      "componentType": "attackSpeed",
+      "stats": {
+        "attackSpeed": 0.1
+      },
+      "effects": []
+    },
+    {
+      "id": "rageblade",
+      "name": {
+        "zhTw": "Guinsoo's Rageblade",
+        "en": "Guinsoo's Rageblade"
+      },
+      "tier": "completed",
+      "recipe": {
+        "componentItemIds": [
+          "bf_sword",
+          "recurve_bow"
+        ]
+      },
+      "stats": {
+        "attackDamage": 15,
+        "attackSpeed": 0.15
+      },
+      "effects": [
+        {
+          "effectType": "bonusStat",
+          "description": {
+            "zhTw": "Attacks grant temporary attack speed.",
+            "en": "Attacks grant temporary attack speed."
+          },
+          "trigger": "onAttack",
+          "value": 0.05,
+          "targetStat": "attackSpeed",
+          "tags": [
+            "stacking",
+            "attack_speed"
+          ]
+        }
+      ],
+      "notes": "Completed item example using the two-component formula style."
+    }
+  ]
+}

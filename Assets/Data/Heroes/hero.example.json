@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "0.1.0",
+  "heroes": [
+    {
+      "id": "darius",
+      "name": {
+        "zhTw": "Darius",
+        "en": "Darius"
+      },
+      "role": "fighter",
+      "attackType": "melee",
+      "damageProfile": "physical",
+      "resourceType": "mana",
+      "baseStats": {
+        "attackDamage": 64,
+        "abilityPower": 0,
+        "armor": 39,
+        "magicResist": 32,
+        "maxHealth": 652,
+        "manaRegen": 6.6,
+        "critChance": 0,
+        "lifeSteal": 0,
+        "attackSpeed": 0.625,
+        "moveSpeed": 340,
+        "attackRange": 175
+      },
+      "growthStats": {
+        "attackDamage": 5,
+        "abilityPower": 0,
+        "armor": 5.2,
+        "magicResist": 2.05,
+        "maxHealth": 114,
+        "manaRegen": 0.35,
+        "critChance": 0,
+        "lifeSteal": 0,
+        "attackSpeed": 0.02,
+        "moveSpeed": 0.01,
+        "attackRange": 0.01
+      },
+      "skills": {
+        "passive": "darius_hemorrhage",
+        "q": "darius_decimate",
+        "w": "darius_crippling_strike",
+        "e": "darius_apprehend",
+        "r": "darius_noxian_guillotine"
+      },
+      "tags": [
+        "juggernaut",
+        "top_lane",
+        "execute"
+      ],
+      "notes": "Example hero data for schema validation only. No gameplay logic is included."
+    }
+  ]
+}
