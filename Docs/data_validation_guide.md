@@ -17,6 +17,9 @@ The validator checks official data files, not example files.
 - `Assets/Data/Matches/match.json`
 - `Assets/Data/Maps/map.json`
 - `Assets/Data/Bots/bot.json`
+- `Assets/Data/Players/player.json`
+- `Assets/Data/Teams/team.json`
+- `Assets/Data/Leagues/league.json`
 
 ## How To Run
 
@@ -40,6 +43,9 @@ Assets/Data/Buffs/buff.json OK
 Assets/Data/Matches/match.json OK
 Assets/Data/Maps/map.json OK
 Assets/Data/Bots/bot.json OK
+Assets/Data/Players/player.json OK
+Assets/Data/Teams/team.json OK
+Assets/Data/Leagues/league.json OK
 Cross-file references OK
 All data validation checks passed.
 ```
@@ -55,6 +61,10 @@ The validator also checks references between files.
 - Bot hero ids must exist in `hero.json`.
 - Bot item ids must exist in `item.json`.
 - Map minion route node ids must exist in the matching lane path nodes.
+- Player hero ids must exist in `hero.json`.
+- Player contract team ids must exist in `team.json`.
+- Team roster player ids must exist in `player.json`.
+- League team ids must exist in `team.json`.
 
 ## Common Errors
 
@@ -66,6 +76,8 @@ The validator also checks references between files.
 - `unknown buff id`: a skill references a buff id that does not exist.
 - `unknown item id`: a bot references an item id that does not exist.
 - `unknown path node id`: a map route references a lane node id that does not exist.
+- `unknown player id`: a team references a player id that does not exist.
+- `unknown team id`: a player or league references a team id that does not exist.
 
 ## Phase 0 Rule
 

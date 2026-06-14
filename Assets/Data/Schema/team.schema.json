@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "team.schema.json",
+  "title": "Team Data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "teams"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "teams": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/team"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zhTw"
+      ],
+      "properties": {
+        "zhTw": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "rosterSlot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lane",
+        "playerId"
+      ],
+      "properties": {
+        "lane": {
+          "type": "string",
+          "enum": [
+            "top",
+            "mid",
+            "bottom",
+            "jungle",
+            "support"
+          ]
+        },
+        "playerId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "strategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "style",
+        "preferredMapSide",
+        "priority"
+      ],
+      "properties": {
+        "style": {
+          "type": "string",
+          "enum": [
+            "balanced",
+            "earlyGame",
+            "scaling",
+            "teamFight",
+            "splitPush"
+          ]
+        },
+        "preferredMapSide": {
+          "type": "string",
+          "enum": [
+            "blue",
+            "red",
+            "none"
+          ]
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "laning",
+            "objectiveControl",
+            "teamFight",
+            "towerPush"
+          ]
+        }
+      }
+    },
+    "team": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "region",
+        "budget",
+        "roster",
+        "preferredStrategy"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "tw",
+            "kr",
+            "cn",
+            "jp",
+            "na",
+            "eu",
+            "sea",
+            "world"
+          ]
+        },
+        "budget": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "roster": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "$ref": "#/$defs/rosterSlot"
+          }
+        },
+        "substitutePlayerIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "preferredStrategy": {
+          "$ref": "#/$defs/strategy"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

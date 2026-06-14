@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "0.1.0",
+  "players": [
+    {
+      "id": "player_stone",
+      "name": {
+        "zhTw": "石牆",
+        "en": "Stone"
+      },
+      "age": 22,
+      "mainLane": "top",
+      "role": "fighter",
+      "heroPool": [
+        "darius"
+      ],
+      "attributes": {
+        "mechanics": 72,
+        "laning": 78,
+        "teamFight": 70,
+        "mapAwareness": 62,
+        "championPool": 55,
+        "mental": 68
+      },
+      "contract": {
+        "status": "contracted",
+        "teamId": "taipei_titans",
+        "salary": 45000,
+        "monthsRemaining": 12
+      },
+      "reputation": 58,
+      "tags": [
+        "starter",
+        "top_lane"
+      ],
+      "notes": "Example top lane player for Phase 0 validation."
+    },
+    {
+      "id": "player_river",
+      "name": {
+        "zhTw": "河流",
+        "en": "River"
+      },
+      "age": 21,
+      "mainLane": "jungle",
+      "role": "assassin",
+      "heroPool": [
+        "darius"
+      ],
+      "attributes": {
+        "mechanics": 68,
+        "laning": 55,
+        "teamFight": 74,
+        "mapAwareness": 80,
+        "championPool": 60,
+        "mental": 70
+      },
+      "contract": {
+        "status": "contracted",
+        "teamId": "taipei_titans",
+        "salary": 42000,
+        "monthsRemaining": 12
+      },
+      "reputation": 54,
+      "tags": [
+        "starter",
+        "jungle"
+      ]
+    },
+    {
+      "id": "player_spark",
+      "name": {
+        "zhTw": "星火",
+        "en": "Spark"
+      },
+      "age": 20,
+      "mainLane": "mid",
+      "role": "mage",
+      "heroPool": [
+        "darius"
+      ],
+      "attributes": {
+        "mechanics": 76,
+        "laning": 73,
+        "teamFight": 75,
+        "mapAwareness": 67,
+        "championPool": 64,
+        "mental": 66
+      },
+      "contract": {
+        "status": "contracted",
+        "teamId": "taipei_titans",
+        "salary": 48000,
+        "monthsRemaining": 12
+      },
+      "reputation": 60,
+      "tags": [
+        "starter",
+        "mid_lane"
+      ]
+    },
+    {
+      "id": "player_arrow",
+      "name": {
+        "zhTw": "箭矢",
+        "en": "Arrow"
+      },
+      "age": 23,
+      "mainLane": "bottom",
+      "role": "marksman",
+      "heroPool": [
+        "darius"
+      ],
+      "attributes": {
+        "mechanics": 79,
+        "laning": 71,
+        "teamFight": 77,
+        "mapAwareness": 63,
+        "championPool": 58,
+        "mental": 72
+      },
+      "contract": {
+        "status": "contracted",
+        "teamId": "taipei_titans",
+        "salary": 50000,
+        "monthsRemaining": 12
+      },
+      "reputation": 62,
+      "tags": [
+        "starter",
+        "bottom_lane"
+      ]
+    },
+    {
+      "id": "player_anchor",
+      "name": {
+        "zhTw": "錨點",
+        "en": "Anchor"
+      },
+      "age": 24,
+      "mainLane": "support",
+      "role": "support",
+      "heroPool": [
+        "darius"
+      ],
+      "attributes": {
+        "mechanics": 61,
+        "laning": 69,
+        "teamFight": 78,
+        "mapAwareness": 82,
+        "championPool": 57,
+        "mental": 75
+      },
+      "contract": {
+        "status": "contracted",
+        "teamId": "taipei_titans",
+        "salary": 40000,
+        "monthsRemaining": 12
+      },
+      "reputation": 56,
+      "tags": [
+        "starter",
+        "support"
+      ]
+    }
+  ]
+}

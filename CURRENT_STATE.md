@@ -38,6 +38,9 @@ Data Architecture
   * match.schema.json
   * map.schema.json
   * bot.schema.json
+  * player.schema.json
+  * team.schema.json
+  * league.schema.json
 * 建立 Example JSON
   * hero.example.json
   * skill.example.json
@@ -46,6 +49,9 @@ Data Architecture
   * match.example.json
   * map.example.json
   * bot.example.json
+  * player.example.json
+  * team.example.json
+  * league.example.json
 * 建立正式資料 JSON
   * hero.json
   * skill.json
@@ -54,6 +60,9 @@ Data Architecture
   * match.json
   * map.json
   * bot.json
+  * player.json
+  * team.json
+  * league.json
 * 建立資料驗證工具
   * Tools/ValidateData/validate_data.js
 * 建立資料製作教學文件
@@ -84,6 +93,9 @@ Assets/Data/Buffs/buff.json OK
 Assets/Data/Matches/match.json OK
 Assets/Data/Maps/map.json OK
 Assets/Data/Bots/bot.json OK
+Assets/Data/Players/player.json OK
+Assets/Data/Teams/team.json OK
+Assets/Data/Leagues/league.json OK
 Cross-file references OK
 All data validation checks passed.
 ```
@@ -94,7 +106,7 @@ All data validation checks passed.
 
 目前進行中：
 
-* Phase 0 收尾檢查
+* Phase 0 收尾檢查完成
 * 準備進入 Phase 1：MOBA Core
 
 ---
@@ -103,11 +115,7 @@ All data validation checks passed.
 
 下一步建議：
 
-1. 補齊 Phase 0 缺少但 AGENTS.md 列為必要資料的後續 schema
-   * league.schema.json
-   * team.schema.json
-   * player.schema.json
-2. 或開始 Phase 1 前置規劃
+1. 開始 Phase 1 前置規劃
    * 2D 地圖資料讀取
    * Entity 資料載入
    * Hero / Minion / Monster / Tower 的資料模型

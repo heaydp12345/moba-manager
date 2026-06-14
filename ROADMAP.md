@@ -155,7 +155,7 @@ Data Validation
 
 ## Optional Phase 0 Extensions
 
-狀態：未開始
+狀態：完成
 
 AGENTS.md 必要資料中仍有下列資料尚未建立 schema：
 
@@ -163,11 +163,17 @@ AGENTS.md 必要資料中仍有下列資料尚未建立 schema：
 * team.json
 * player.json
 
-這些資料較偏向後續聯賽與經營系統。若嚴格完成所有必要資料檔案，可先建立：
+這些資料較偏向後續聯賽與經營系統，但已先建立 Phase 0 資料架構：
 
 * league.schema.json
 * team.schema.json
 * player.schema.json
+* league.example.json
+* team.example.json
+* player.example.json
+* league.json
+* team.json
+* player.json
 
 ---
 

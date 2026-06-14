@@ -38,6 +38,21 @@ const dataSets = [
     name: "bot",
     schemaPath: "Assets/Data/Schema/bot.schema.json",
     dataPath: "Assets/Data/Bots/bot.json"
+  },
+  {
+    name: "player",
+    schemaPath: "Assets/Data/Schema/player.schema.json",
+    dataPath: "Assets/Data/Players/player.json"
+  },
+  {
+    name: "team",
+    schemaPath: "Assets/Data/Schema/team.schema.json",
+    dataPath: "Assets/Data/Teams/team.json"
+  },
+  {
+    name: "league",
+    schemaPath: "Assets/Data/Schema/league.schema.json",
+    dataPath: "Assets/Data/Leagues/league.json"
   }
 ];
 
@@ -206,6 +221,8 @@ function validateCrossReferences(dataByName) {
   const skillIds = collectIds(dataByName.skill.skills);
   const itemIds = collectIds(dataByName.item.items);
   const buffIds = collectIds(dataByName.buff.buffs);
+  const playerIds = collectIds(dataByName.player.players);
+  const teamIds = collectIds(dataByName.team.teams);
 
   for (const hero of dataByName.hero.heroes) {
     for (const [slot, skillId] of Object.entries(hero.skills)) {
@@ -232,6 +249,37 @@ function validateCrossReferences(dataByName) {
 
     for (const itemId of bot.itemBuildPlan.fallbackItemIds || []) {
       requireId(errors, `bot "${bot.id}" fallbackItemIds`, itemIds, itemId, "item");
+    }
+  }
+
+  for (const player of dataByName.player.players) {
+    for (const heroId of player.heroPool) {
+      requireId(errors, `player "${player.id}" heroPool`, heroIds, heroId, "hero");
+    }
+
+    if (player.contract.teamId) {
+      requireId(errors, `player "${player.id}" contract.teamId`, teamIds, player.contract.teamId, "team");
+    }
+  }
+
+  for (const team of dataByName.team.teams) {
+    const rosterLanes = new Set();
+    for (const rosterSlot of team.roster) {
+      if (rosterLanes.has(rosterSlot.lane)) {
+        errors.push(`team "${team.id}" roster: duplicate lane "${rosterSlot.lane}"`);
+      }
+      rosterLanes.add(rosterSlot.lane);
+      requireId(errors, `team "${team.id}" roster.${rosterSlot.lane}`, playerIds, rosterSlot.playerId, "player");
+    }
+
+    for (const playerId of team.substitutePlayerIds || []) {
+      requireId(errors, `team "${team.id}" substitutePlayerIds`, playerIds, playerId, "player");
+    }
+  }
+
+  for (const league of dataByName.league.leagues) {
+    for (const teamId of league.teamIds) {
+      requireId(errors, `league "${league.id}" teamIds`, teamIds, teamId, "team");
     }
   }
 
