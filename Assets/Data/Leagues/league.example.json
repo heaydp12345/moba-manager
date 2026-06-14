@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "0.1.0",
+  "leagues": [
+    {
+      "id": "taiwan_challenger_league",
+      "name": {
+        "zhTw": "台灣挑戰者聯賽",
+        "en": "Taiwan Challenger League"
+      },
+      "region": "tw",
+      "season": 1,
+      "teamIds": [
+        "taipei_titans"
+      ],
+      "format": "leagueWithPlayoffs",
+      "scheduleRules": {
+        "roundRobinRounds": 2,
+        "bestOf": 1,
+        "playoffTeamCount": 1
+      },
+      "worldsQualificationSlots": 1,
+      "notes": "Example league data for Phase 0 validation."
+    }
+  ]
+}

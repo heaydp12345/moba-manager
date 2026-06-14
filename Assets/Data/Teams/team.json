@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1.0",
+  "teams": [
+    {
+      "id": "taipei_titans",
+      "name": {
+        "zhTw": "台北泰坦",
+        "en": "Taipei Titans"
+      },
+      "region": "tw",
+      "budget": 1200000,
+      "roster": [
+        {
+          "lane": "top",
+          "playerId": "player_stone"
+        },
+        {
+          "lane": "jungle",
+          "playerId": "player_river"
+        },
+        {
+          "lane": "mid",
+          "playerId": "player_spark"
+        },
+        {
+          "lane": "bottom",
+          "playerId": "player_arrow"
+        },
+        {
+          "lane": "support",
+          "playerId": "player_anchor"
+        }
+      ],
+      "substitutePlayerIds": [],
+      "preferredStrategy": {
+        "style": "balanced",
+        "preferredMapSide": "blue",
+        "priority": "objectiveControl"
+      },
+      "tags": [
+        "phase0_example"
+      ],
+      "notes": "Example team data for Phase 0 validation."
+    }
+  ]
+}
