@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "0.1.0",
+  "matches": [
+    {
+      "id": "standard_ranked_match",
+      "name": {
+        "zhTw": "標準 5v5 比賽",
+        "en": "Standard 5v5 Match"
+      },
+      "teamSize": 5,
+      "maxLevel": 15,
+      "maxItems": 3,
+      "banCount": 2,
+      "pickCount": 5,
+      "matchTimeLimit": 1800,
+      "gameMode": "moba",
+      "winCondition": "destroyEnemyNexus",
+      "seedPolicy": "optional",
+      "notes": "Phase 0 data example for schema validation only."
+    }
+  ]
+}

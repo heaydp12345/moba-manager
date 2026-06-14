@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "0.1.0",
+  "bots": [
+    {
+      "id": "darius_fighter_bot",
+      "name": {
+        "zhTw": "達瑞斯戰士 Bot",
+        "en": "Darius Fighter Bot"
+      },
+      "difficulty": "normal",
+      "role": "fighter",
+      "heroPool": [
+        "darius"
+      ],
+      "lanePreference": {
+        "primaryLane": "top",
+        "secondaryLanes": [
+          "jungle"
+        ]
+      },
+      "behaviorWeights": {
+        "lastHit": 0.65,
+        "laning": 0.75,
+        "retreat": 0.55,
+        "teamFight": 0.7,
+        "itemBuild": 0.6,
+        "pushTower": 0.5,
+        "jungle": 0.25,
+        "objectiveControl": 0.45
+      },
+      "decisionThresholds": {
+        "retreatHealthRatio": 0.28,
+        "allInHealthRatio": 0.55,
+        "groupUpAllyRatio": 0.6,
+        "objectiveContestRatio": 0.5
+      },
+      "itemBuildPlan": {
+        "preferredItemIds": [
+          "rageblade"
+        ],
+        "fallbackItemIds": [
+          "bf_sword",
+          "recurve_bow"
+        ]
+      },
+      "seedPolicy": "matchSeed",
+      "tags": [
+        "top_lane",
+        "fighter",
+        "schema_example"
+      ],
+      "notes": "Example bot data only. This file defines AI tuning data, not AI behavior logic."
+    }
+  ]
+}

@@ -1,0 +1,359 @@
+{
+  "schemaVersion": "0.1.0",
+  "maps": [
+    {
+      "id": "standard_moba_map",
+      "name": {
+        "zhTw": "標準 MOBA 地圖",
+        "en": "Standard MOBA Map"
+      },
+      "mapType": "moba",
+      "size": {
+        "width": 16000,
+        "height": 16000
+      },
+      "nexuses": [
+        {
+          "id": "blue_nexus",
+          "team": "blue",
+          "position": {
+            "x": -7200,
+            "y": -7200
+          },
+          "maxHealth": 5000
+        },
+        {
+          "id": "red_nexus",
+          "team": "red",
+          "position": {
+            "x": 7200,
+            "y": 7200
+          },
+          "maxHealth": 5000
+        }
+      ],
+      "lanes": [
+        {
+          "id": "top_lane",
+          "name": {
+            "zhTw": "上路",
+            "en": "Top Lane"
+          },
+          "laneType": "top",
+          "pathNodes": [
+            {
+              "id": "top_blue_base",
+              "position": {
+                "x": -7200,
+                "y": -7200
+              }
+            },
+            {
+              "id": "top_blue_outer",
+              "position": {
+                "x": -6500,
+                "y": 2500
+              }
+            },
+            {
+              "id": "top_center",
+              "position": {
+                "x": -2500,
+                "y": 6500
+              }
+            },
+            {
+              "id": "top_red_outer",
+              "position": {
+                "x": 2500,
+                "y": 6500
+              }
+            },
+            {
+              "id": "top_red_base",
+              "position": {
+                "x": 7200,
+                "y": 7200
+              }
+            }
+          ]
+        },
+        {
+          "id": "mid_lane",
+          "name": {
+            "zhTw": "中路",
+            "en": "Mid Lane"
+          },
+          "laneType": "mid",
+          "pathNodes": [
+            {
+              "id": "mid_blue_base",
+              "position": {
+                "x": -7200,
+                "y": -7200
+              }
+            },
+            {
+              "id": "mid_blue_outer",
+              "position": {
+                "x": -3500,
+                "y": -3500
+              }
+            },
+            {
+              "id": "mid_center",
+              "position": {
+                "x": 0,
+                "y": 0
+              }
+            },
+            {
+              "id": "mid_red_outer",
+              "position": {
+                "x": 3500,
+                "y": 3500
+              }
+            },
+            {
+              "id": "mid_red_base",
+              "position": {
+                "x": 7200,
+                "y": 7200
+              }
+            }
+          ]
+        },
+        {
+          "id": "bottom_lane",
+          "name": {
+            "zhTw": "下路",
+            "en": "Bottom Lane"
+          },
+          "laneType": "bottom",
+          "pathNodes": [
+            {
+              "id": "bottom_blue_base",
+              "position": {
+                "x": -7200,
+                "y": -7200
+              }
+            },
+            {
+              "id": "bottom_blue_outer",
+              "position": {
+                "x": -2500,
+                "y": -6500
+              }
+            },
+            {
+              "id": "bottom_center",
+              "position": {
+                "x": 2500,
+                "y": -6500
+              }
+            },
+            {
+              "id": "bottom_red_outer",
+              "position": {
+                "x": 6500,
+                "y": -2500
+              }
+            },
+            {
+              "id": "bottom_red_base",
+              "position": {
+                "x": 7200,
+                "y": 7200
+              }
+            }
+          ]
+        }
+      ],
+      "towers": [
+        {
+          "id": "blue_top_outer_tower",
+          "team": "blue",
+          "laneType": "top",
+          "position": {
+            "x": -6200,
+            "y": 2200
+          },
+          "attackRange": 900,
+          "attackDamage": 160,
+          "maxHealth": 3000
+        },
+        {
+          "id": "red_top_outer_tower",
+          "team": "red",
+          "laneType": "top",
+          "position": {
+            "x": 2200,
+            "y": 6200
+          },
+          "attackRange": 900,
+          "attackDamage": 160,
+          "maxHealth": 3000
+        },
+        {
+          "id": "blue_mid_outer_tower",
+          "team": "blue",
+          "laneType": "mid",
+          "position": {
+            "x": -3200,
+            "y": -3200
+          },
+          "attackRange": 900,
+          "attackDamage": 160,
+          "maxHealth": 3000
+        },
+        {
+          "id": "red_mid_outer_tower",
+          "team": "red",
+          "laneType": "mid",
+          "position": {
+            "x": 3200,
+            "y": 3200
+          },
+          "attackRange": 900,
+          "attackDamage": 160,
+          "maxHealth": 3000
+        },
+        {
+          "id": "blue_bottom_outer_tower",
+          "team": "blue",
+          "laneType": "bottom",
+          "position": {
+            "x": -2200,
+            "y": -6200
+          },
+          "attackRange": 900,
+          "attackDamage": 160,
+          "maxHealth": 3000
+        },
+        {
+          "id": "red_bottom_outer_tower",
+          "team": "red",
+          "laneType": "bottom",
+          "position": {
+            "x": 6200,
+            "y": -2200
+          },
+          "attackRange": 900,
+          "attackDamage": 160,
+          "maxHealth": 3000
+        }
+      ],
+      "jungleZones": [
+        {
+          "id": "blue_jungle",
+          "name": {
+            "zhTw": "藍方野區",
+            "en": "Blue Jungle"
+          },
+          "side": "blue",
+          "center": {
+            "x": -3000,
+            "y": -1000
+          },
+          "radius": 2500,
+          "campIds": [
+            "blue_red_buff",
+            "blue_blue_buff"
+          ]
+        },
+        {
+          "id": "red_jungle",
+          "name": {
+            "zhTw": "紅方野區",
+            "en": "Red Jungle"
+          },
+          "side": "red",
+          "center": {
+            "x": 3000,
+            "y": 1000
+          },
+          "radius": 2500,
+          "campIds": [
+            "red_red_buff",
+            "red_blue_buff"
+          ]
+        },
+        {
+          "id": "river_objective_zone",
+          "name": {
+            "zhTw": "河道目標區",
+            "en": "River Objective Zone"
+          },
+          "side": "neutral",
+          "center": {
+            "x": 0,
+            "y": 0
+          },
+          "radius": 1800,
+          "campIds": [
+            "major_objective"
+          ]
+        }
+      ],
+      "minionWaveRoutes": [
+        {
+          "laneType": "top",
+          "bluePathNodeIds": [
+            "top_blue_base",
+            "top_blue_outer",
+            "top_center",
+            "top_red_outer",
+            "top_red_base"
+          ],
+          "redPathNodeIds": [
+            "top_red_base",
+            "top_red_outer",
+            "top_center",
+            "top_blue_outer",
+            "top_blue_base"
+          ]
+        },
+        {
+          "laneType": "mid",
+          "bluePathNodeIds": [
+            "mid_blue_base",
+            "mid_blue_outer",
+            "mid_center",
+            "mid_red_outer",
+            "mid_red_base"
+          ],
+          "redPathNodeIds": [
+            "mid_red_base",
+            "mid_red_outer",
+            "mid_center",
+            "mid_blue_outer",
+            "mid_blue_base"
+          ]
+        },
+        {
+          "laneType": "bottom",
+          "bluePathNodeIds": [
+            "bottom_blue_base",
+            "bottom_blue_outer",
+            "bottom_center",
+            "bottom_red_outer",
+            "bottom_red_base"
+          ],
+          "redPathNodeIds": [
+            "bottom_red_base",
+            "bottom_red_outer",
+            "bottom_center",
+            "bottom_blue_outer",
+            "bottom_blue_base"
+          ]
+        }
+      ],
+      "vision": {
+        "enabled": false,
+        "defaultVisionRadius": 1200,
+        "notes": "Vision is reserved as data only. No vision logic is implemented in Phase 0."
+      },
+      "notes": "Example map data for schema validation only. Pathfinding and spawning logic are not implemented here."
+    }
+  ]
+}

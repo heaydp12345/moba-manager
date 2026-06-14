@@ -6,13 +6,15 @@
 
 Pre-Production
 
-尚未開始正式開發。
+目前仍在前期製作階段，優先建立 MOBA 比賽模擬器所需的資料架構。
 
 ---
 
 ## Current Goal
 
-建立 MOBA 模擬器核心。
+目前目標：
+
+完成 Phase 0 資料架構，讓後續 MOBA Core 可以讀取穩定、可驗證的 JSON 資料。
 
 ---
 
@@ -26,26 +28,88 @@ Data Architecture
 
 ## Completed
 
-* 專案概念確認
-* 開發方向確認
-* 階段規劃確認
+已完成：
+
+* 建立核心資料 Schema
+  * hero.schema.json
+  * skill.schema.json
+  * item.schema.json
+  * buff.schema.json
+  * match.schema.json
+  * map.schema.json
+  * bot.schema.json
+* 建立 Example JSON
+  * hero.example.json
+  * skill.example.json
+  * item.example.json
+  * buff.example.json
+  * match.example.json
+  * map.example.json
+  * bot.example.json
+* 建立正式資料 JSON
+  * hero.json
+  * skill.json
+  * item.json
+  * buff.json
+  * match.json
+  * map.json
+  * bot.json
+* 建立資料驗證工具
+  * Tools/ValidateData/validate_data.js
+* 建立資料製作教學文件
+  * hero_creation_bilingual_template.md
+  * map_creation_bilingual_template.md
+  * bot_creation_bilingual_template.md
+  * data_validation_guide.md
+
+---
+
+## Validation Status
+
+目前驗證狀態：
+
+已執行：
+
+```powershell
+node Tools\ValidateData\validate_data.js
+```
+
+結果：
+
+```text
+Assets/Data/Heroes/hero.json OK
+Assets/Data/Skills/skill.json OK
+Assets/Data/Items/item.json OK
+Assets/Data/Buffs/buff.json OK
+Assets/Data/Matches/match.json OK
+Assets/Data/Maps/map.json OK
+Assets/Data/Bots/bot.json OK
+Cross-file references OK
+All data validation checks passed.
+```
 
 ---
 
 ## In Progress
 
-無
+目前進行中：
+
+* Phase 0 收尾檢查
+* 準備進入 Phase 1：MOBA Core
 
 ---
 
 ## Next Task
 
-建立：
+下一步建議：
 
-* hero.json
-* skill.json
-* item.json
-* buff.json
-* map.json
+1. 補齊 Phase 0 缺少但 AGENTS.md 列為必要資料的後續 schema
+   * league.schema.json
+   * team.schema.json
+   * player.schema.json
+2. 或開始 Phase 1 前置規劃
+   * 2D 地圖資料讀取
+   * Entity 資料載入
+   * Hero / Minion / Monster / Tower 的資料模型
 
-資料格式規範。
+目前仍禁止開發經理模式。
